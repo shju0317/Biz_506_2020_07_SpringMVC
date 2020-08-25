@@ -20,10 +20,7 @@
 	/* An + b 형식의 연산식을 사용한다 */
 	/* n : 1~child 개수만큼 +1씩 증가하는 값 */
 	/* th와 td값에 4번째 위치부터 이후에 동일한 특성(style)을 지정 */
-	th:nth-child(n+4), 
-	td:nth-child(n+4){
-		text-align: right;
-	}
+
 	
 	tbody tr:nth-child(odd){
 		background-color: #f1f1f1;
@@ -66,45 +63,29 @@
 </style>    
 <script>
 	$(function(){
-		$(".pro_item").click(function(){
-			// tr들 중에 한 항목을 클릭하면
-			// 그 항목에 대한 정보가 this에 담기게 된다.
-			// this에 담긴 정보 중에 자손 tag들(td)을 찾고
-			// 자손 tag들 중에 0번째에 있는 자손의 text값을 가져와서
-			// p_code 변수에 담아라
-			const p_code = $(this).children().eq(0).text()
-			//alert(p_code)
-			
-			const p_code1 = $(this).data("pcode")
-			//alert(p_code1)
-			
-			document.location.href="${rootPath}/product/detail?id=" + p_code // ex) ?id=P0001
-			/* 
-			문자열 탬플릿트
-			ES6(ESCMA 2015)에서는 백틱을 사용하여 변수명과 문자열을 합성할 수 있다.
-			=`${rootPath}/product/detail?id{p_code}`
-			하지만 JSP에서는 EL tag와 문법충돌로 인해 사용불가능하다.
-			*/		
-			
+		$(".dept_item").click(function(){
+			const d_code = $(this).children().eq(0).text()						
+			document.location.href="${rootPath}/dept/detail?id=" + d_code		
 		})
 	})
 </script>
 <table>
 	<thead>
 		<tr>
-			<th>상품코드</th>
-			<th>상품이름</th>
-			<th>주매입처</th>
-			<th>매입가격</th>
-			<th>판매가격</th>
+			<th>코드</th>
+			<th>거래처명</th>
+			<th>대표자명</th>
+			<th>대표전화</th>
+			<th>담당자</th>
+			<th>담당연락처</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach items="${PRO_LIST}" var="VO">
-			<%@ include file="/WEB-INF/views/component/product/product_item.jspf" %>
+		<c:forEach items="${DEPT_LIST}" var="VO">
+			<%@ include file="/WEB-INF/views/component/dept/dept_item.jspf" %>
 		</c:forEach>
 	</tbody>
 </table>
 <article>
-	<a href="${rootPath}/product/insert">상품추가</a>
+	<a href="${rootPath}/dept/insert">거래처추가</a>
 </article>

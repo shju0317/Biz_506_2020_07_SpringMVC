@@ -8,7 +8,7 @@ import com.biz.shop.model.ProductVO;
 
 public interface ProductDao extends GenericDao<ProductVO, String>{
 	
-	@Select("SELECT * FROM tbl_product")
+	@Select(" SELECT * FROM tbl_product WHERE p_not_use IS NULL ")
 	@Override
 	public List<ProductVO> selectAll();
 
@@ -19,10 +19,10 @@ public interface ProductDao extends GenericDao<ProductVO, String>{
 	 * mapper.xml 파일을 작성하지 않고 직버 Dao 인터페이스에 SQL을
 	 * 구현하는 방법
 	 */
-	@Select("SELECT MAX(p_code) FROM tbl_product")
+	@Select(" SELECT MAX(p_code) FROM tbl_product ")
 	public String maxPCode();
 	
-	@Select("SELECT * FROM tbl_product WHERE p_code = RPAD(#{id},6,' ') ")
+	@Select(" SELECT * FROM tbl_product WHERE p_not_use IS NULL AND p_code = RPAD(#{id},6,' ') ")
 	@Override
 	public ProductVO findById(String id);
 }
