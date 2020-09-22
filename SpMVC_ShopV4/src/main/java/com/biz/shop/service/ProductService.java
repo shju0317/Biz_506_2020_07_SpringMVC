@@ -22,4 +22,3 @@ public interface ProductService extends GenericService<ProductVO, String>{
 	public String getPCode();
 	
 }
-
