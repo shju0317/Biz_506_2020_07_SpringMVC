@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h3>Helloooooooooooooo :)</h3>
-	<form method="POST" action="${rootPath}/book">
+	<form method="POST" action="${rootPath}/naver/api">
 		<input name="book_name">
 		<button>검색</button>
 	</form>

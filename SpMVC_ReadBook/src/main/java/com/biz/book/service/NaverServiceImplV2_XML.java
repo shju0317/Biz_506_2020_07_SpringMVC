@@ -17,18 +17,19 @@ import org.springframework.web.client.RestTemplate;
 
 import com.biz.book.config.NaverSecret;
 import com.biz.book.model.Book_JSON_Parent;
+import com.biz.book.model.Book_XML_Parent;
 import com.biz.book.model.BookVO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service("naverServiceV2")
-public class NaverServiceImplV2 extends NaverServiceImplV1{
+@Service("naverServiceV2_XML")
+public class NaverServiceImplV2_XML extends NaverServiceImplV1{
 	
 	// 도서명을 매개변수로 받아서 query URL을 생성
 	public String queryURL(String category, String bookName) {
 
-		String queryURL = NaverSecret.NAVER_BOOK_JSON;
+		String queryURL = NaverSecret.NAVER_BOOK_XML;
 		String encodeText = null;
 		try {
 			// 한글 검색을 위해서 검색어를 UTF-8로 encoding 처리해주어야 한다.
@@ -91,15 +92,15 @@ public class NaverServiceImplV2 extends NaverServiceImplV1{
 		headers.set("X-Naver-Client-Id", NaverSecret.NAVER_CLIENT_ID);
 		headers.set("X-Naver-Client-Secret", NaverSecret.NAVER_CLIENT_SECRET);
 		
-		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_XML));
 		
 		HttpEntity<String> entity = new HttpEntity<String>("parameter", headers);
 		
-		ResponseEntity<Book_JSON_Parent> bookList = null;
+		ResponseEntity<Book_XML_Parent> bookList = null;
 		
-		bookList = restTemp.exchange(restURI, HttpMethod.GET, entity, Book_JSON_Parent.class);
+		bookList = restTemp.exchange(restURI, HttpMethod.GET, entity, Book_XML_Parent.class);
 		
 		log.debug(bookList.toString());
-		return bookList.getBody().items;
+		return bookList.getBody().channel.item;
 	}
 }
