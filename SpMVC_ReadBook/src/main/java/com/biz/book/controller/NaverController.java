@@ -36,8 +36,18 @@ public class NaverController {
 	
 	@RequestMapping(value="/search", method=RequestMethod.POST)
 	
+	/*
+	 * @RequestParam()
+	 * Controller의 매개변수를 재정의하는 용도
+	 * 만약 client에서 보내는 변수 이름과 Controller에서 사용하는 변수 이름을
+	 * 다르게 하고 싶으면 '@RequestParam(name="변수") String 내이름'
+	 * 
+	 * client에서 해당 변수값을 빼먹고 전송했을 때 오류를 최소화 하기 위해선
+	 * '@RequestParam(name="내이름", required=false, defaultValue="홍길동") String 내이름'
+	 * client에서 '내이름'변수에 값을 보내지 않으면 기본값인 '홍길동'문자열을 '내이름'변수에 할당한다.
+	 */
 	// required=false : 필수 아님(=값이 안와도 됨)
-	// defaultValue="BOOK" : 값을 BOOK으로
+	// defaultValue="BOOK" : 값을 BOOK으로 할당
 	public String search(@RequestParam(name="category", required=false, defaultValue="BOOK") String category, 
 			@RequestParam(name="search_text")String search_text, 
 			Model model) {
@@ -54,7 +64,7 @@ public class NaverController {
 		List<BookVO> bookList = nServiceV2.getNaverList(queryURL);
 		
 		model.addAttribute("NAVERS", bookList);
-		return "naver/naver-list";
+		return "naver/naver-search-list";
 	}
 	
 	@ResponseBody
