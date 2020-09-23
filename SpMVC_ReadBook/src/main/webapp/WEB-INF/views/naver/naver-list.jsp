@@ -93,6 +93,7 @@ img {
 					</c:if>
 				</a>
 				<p>${naver.description}</p>
+				<p>ISBN : ${naver.isbn}</p>
 			</div>
 		</c:forEach>
 	</section>
