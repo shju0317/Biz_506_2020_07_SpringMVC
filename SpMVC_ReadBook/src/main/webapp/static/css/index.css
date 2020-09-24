@@ -88,7 +88,7 @@ nav#main-nav {
 
 #main-nav ul li:hover {
   background-color: #ddd;
-  color: teal;
+  color: rgb(102,102,153);
 }
 
 section#main-section {

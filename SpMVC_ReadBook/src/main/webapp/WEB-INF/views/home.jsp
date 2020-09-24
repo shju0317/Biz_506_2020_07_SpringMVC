@@ -42,6 +42,9 @@
 		<c:when test="${BODY == 'BOOK-WRITE'}">
 			<%@ include file="/WEB-INF/views/books/book-write.jsp" %>
 		</c:when>
+		<c:when test="${BODY == 'BOOK-DETAIL'}">
+			<%@ include file="/WEB-INF/views/books/book-detail.jsp" %>
+		</c:when>
 	</c:choose>
 </section>
     <footer>
