@@ -13,36 +13,38 @@ import com.biz.book.mapper.BookDao;
 import com.biz.book.model.BookVO;
 
 @Controller
-@RequestMapping(value="/books")
+@RequestMapping(value = "/books")
 public class BooksController {
-	
+
 	@Autowired
 	private BookDao bookDao;
-	
+
 	// value={"/",""} 로 하는 이유
-	// 	 localhost:8080/book/books
-	// 	 localhost:8080/book/books/
-	// 	 둘 다 쓸 수 있도록 하려고
+	// localhost:8080/book/books
+	// localhost:8080/book/books/
+	// 둘 다 쓸 수 있도록 하려고
 	// @ResponseBody
-	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
-	public String list(Model model){
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
+	public String list(Model model) {
 		List<BookVO> bookList = bookDao.selectAll();
 		model.addAttribute("BOOKS", bookList);
-		
-		return "books/book-list";
+		model.addAttribute("BODY", "BOOK-LIST");
+
+		return "home";
 	}
-	
-	@RequestMapping(value="/input", method=RequestMethod.GET)
-	public String input() {
-		
-		return "books/book-write";
-		
+
+	@RequestMapping(value = "/input", method = RequestMethod.GET)
+	public String input(Model model) {
+
+		model.addAttribute("BODY", "BOOK-WRITE");
+		model.addAttribute("bookVO", new BookVO());
+
+		return "home";
+
 		/*
-		Controller의 Mapping method의 return type이 String일 때
-		null값을 return하면
-		method를 호출할 때 사용했던 mapping URL.jsp 형식의 return문이
-		자동으로 생성된다.
-		*/
+		 * Controller의 Mapping method의 return type이 String일 때 null값을 return하면 method를
+		 * 호출할 때 사용했던 mapping URL.jsp 형식의 return문이 자동으로 생성된다.
+		 */
 		// return null;
 	}
 }
