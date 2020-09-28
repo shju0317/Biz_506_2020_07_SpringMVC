@@ -5,6 +5,9 @@
 (선택사항)
  */
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico");
 
 * {
   /* box를 그릴 때 margin padding에 의해 layout이 무너지는 현상을 최소화하기 위한 초기화 조치 */
@@ -20,14 +23,16 @@ header {
    */
   position: relative;
 
-  height: 400px;
+  height: 100px;
   color: white;
 
+  /* 
   background-image: url("../images/cloud3.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-attachment: fixed;
+  */
 
   display: flex;
   flex-direction: column;
@@ -36,7 +41,8 @@ header {
 }
 
 header h1 {
-  font-weight: 900;
+  font-family: "Pacifico", cursive;
+  font-weight: 300;
 
   /* left, bottom, right, top */
   /*
@@ -46,9 +52,11 @@ header h1 {
   text-shadow: 0 2px 2px rgb(153, 0, 102), 2px 0 2px rgb(153, 0, 102);
 }
 
+/*
 header h5 {
   color: rgb(102, 102, 153);
 }
+*/
 
 nav#main-nav {
   /*
@@ -58,7 +66,7 @@ nav#main-nav {
   position: relative;
   width: 100%;
   background-color: white;
-  border-bottom: 2px solid rgb(102, 102, 153);
+  border-bottom: 0.3px solid rgb(102, 102, 153);
 }
 
 #main-nav ul {
@@ -67,6 +75,8 @@ nav#main-nav {
 }
 
 #main-nav ul li {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 20px;
   display: inline-block;
   padding: 12px 16px;
   color: rgb(102, 102, 153);
@@ -75,7 +85,7 @@ nav#main-nav {
 }
 
 #main-nav ul li:nth-child(1) {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 900;
   color: rgb(153, 0, 102);
 }
@@ -89,11 +99,23 @@ nav#main-nav {
   color: #ddd;
 }
 
+/* button이 가지는 고유한 모양을 모두 제거하고 버튼 성질만 남기기*/
+#main-nav button {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 21px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
 section#main-section {
   height: 1000px;
 }
 
 footer {
+  font-family: "Nanum Pen Script", cursive;
   background-color: rgb(102, 102, 153);
   color: white;
   text-align: center;

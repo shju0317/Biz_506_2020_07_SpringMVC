@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>Spring Framework~!!</title>
-<link href="${rootPath}/static/css/book-list.css?ver=2020-09-24-002" rel="stylesheet">
+<link href="${rootPath}/static/css/book-list.css?ver=2020-09-24-004" rel="stylesheet">
 <script src="${rootPath}/static/js/book-list.js?ver=2020-09-24"></script>
 </head>
 <body>

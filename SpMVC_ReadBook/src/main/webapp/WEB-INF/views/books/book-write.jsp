@@ -5,7 +5,6 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>   
 <link href="${rootPath}/static/css/book-write.css?ver=2020-09-24-002" rel="stylesheet"> 
 <script src="${rootPath}/static/js/book-write.js?ver=2020-09-24-002"></script>
-<h3>도서정보 등록</h3>
 <form:form id="books" modelAttribute="bookVO">
 	<fieldset>
 		<legend>도서정보 입력</legend>

@@ -53,6 +53,12 @@
 		background-color: #ccc;
 		padding: 10px;
 	}
+	
+	section#read-book-body{
+		width: 60%;
+		border: 1px dashed rgb(102, 102, 153);
+		margin: 5px auto;
+	}
 </style>
 	<table id="book-detail">
 		<tr class="title">
@@ -99,3 +105,6 @@
 			</th>
 		</tr>
 	</table>
+	<section id="read-book-body">
+		<%@include file="/WEB-INF/views/read-book/read-book-write.jsp" %>
+	</section>
