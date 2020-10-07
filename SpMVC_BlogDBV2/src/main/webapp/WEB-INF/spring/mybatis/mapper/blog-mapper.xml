@@ -47,7 +47,6 @@
 			bl_title = #{bl_title},
 			bl_contents	= #{bl_contents}
 		WHERE bl_seq = #{bl_seq}
- 	
  	</update>
  	<delete id="delete">
  		DELETE FROM tbl_blogs

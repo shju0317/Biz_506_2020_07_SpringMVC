@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script");
+
+table#book-list {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 90%;
+  border: 2px dashed rgb(102, 102, 153);
+  margin: 30px auto;
+}
+
+table#book-list th,
+table#book-list td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+table#book-list td {
+  cursor: pointer;
+}
+
+table#book-list tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+table#book-list tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* 
+An+2 공식으로 계산되는 결과에 따라 선택된다.
+동일한 tag가 연속적으로 나올 때 tag의 개수만큼 'n: 0 ~ 개수-1' 증가 속성
+3n+2
+ */
+table#book-list tr:nth-child(n + 2):hover {
+  background-color: #ccc;
+}
+
+div#book-link-box {
+  width: 90%;
+  margin: 10px auto;
+  text-align: right;
+}
+
+div#book-link-box a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: rgb(000, 000, 051);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+div#book-link-box a:hover {
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}

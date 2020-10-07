@@ -52,7 +52,7 @@ JS에서 event핸들러를 설정할 때 아직 화면에 없는 tag에 연결�
 
 사후에(HTML문서가 완성된 후) JS코드로 생성할 tag(id, class)에
 event를 설정하려면 자체에 설정하지 않고
-가장 상위 객체인 document에 on 함수를 삿용하여 event를 설정한다.
+가장 상위 객체인 document에 on 함수를 사용하여 event를 설정한다.
 $(document).on( "event", "대상", function(){ } )
 
 주의사항

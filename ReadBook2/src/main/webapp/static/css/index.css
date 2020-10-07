@@ -1,0 +1,101 @@
+/* 
+@charset "UTF-8";
+: 주석을 한글로 작성했을 때 처음 작성한 editor가 아닌 다른 editor로 오픈했을 때
+한글이 깨지는 경우가 있는데 그 현상을 막는 효과가 있다.
+(선택사항)
+ */
+@charset "UTF-8";
+
+* {
+  /* box를 그릴 때 margin padding에 의해 layout이 무너지는 현상을 최소화하기 위한 초기화 조치 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  /* 
+  nav#main-nav 태그에 position:relative를 적용시키기 위해서
+  미리 header에 position을 지정해준다
+   */
+  position: relative;
+
+  height: 400px;
+  color: white;
+
+  background-image: url("../images/cloud3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 900;
+
+  /* left, bottom, right, top */
+  /*
+  text-shadow: -2px 0 rgb(153, 0, 102), 0 2px rgb(102, 102, 153),
+    2px 0 rgb(102, 102, 153), 0 -2px rgb(153, 0, 102);
+  */
+  text-shadow: 0 2px 2px rgb(153, 0, 102), 2px 0 2px rgb(153, 0, 102);
+}
+
+header h5 {
+  color: rgb(102, 102, 153);
+}
+
+nav#main-nav {
+  /*
+  header에 position이 relative로 설정되어 있기 때문에
+  header를 따라다니는 모양새가 된다.
+  */
+  position: relative;
+  width: 100%;
+  background-color: white;
+  border-bottom: 2px solid rgb(102, 102, 153);
+}
+
+#main-nav ul {
+  list-style: none;
+  display: flex;
+}
+
+#main-nav ul li {
+  display: inline-block;
+  padding: 12px 16px;
+  color: rgb(102, 102, 153);
+  margin: 0 12px;
+  cursor: pointer;
+}
+
+#main-nav ul li:nth-child(1) {
+  font-size: 16px;
+  font-weight: 900;
+  color: rgb(153, 0, 102);
+}
+
+#main-nav ul li:nth-child(4),
+#main-nav ul li:nth-child(5) {
+  margin-left: auto;
+}
+
+#main-nav ul li:hover {
+  color: #ddd;
+}
+
+section#main-section {
+  height: 1000px;
+}
+
+footer {
+  background-color: rgb(102, 102, 153);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
