@@ -11,9 +11,9 @@ Controller에서 member-write2.jsp를 열어서 회원가입을 두 화면에 �
 @SessionAttributes()와 @ModelAttribute()로 설정되어있기 때문에
 마치 한개의 form에 모든 input box가 있고, 한번 모든 값을 입력한 것과 똑같은 효과를 낸다.
 */%>
-<form:form modelAttribute="memberVO" id="member-write" action="${rootPath}/member/join_comp">
+<form:form modelAttribute="memberVO" id="member-write" action="${rootPath}/member/update_comp">
 	<fieldset>
-		<legend>회원가입 계속</legend>
+		<legend>회원정보 수정</legend>
 		<div>
 			<label>회원명</label>
 			<form:input path="m_name"/>
@@ -32,7 +32,7 @@ Controller에서 member-write2.jsp를 열어서 회원가입을 두 화면에 �
 		</div>
 		<div id="btn_box">
 			<button type="button" id="btn_home">홈으로</button>
-			<button type="submit" id="btn_save">가입신청</button>
+			<button type="submit" id="btn_save">정보수정</button>
 		</div>
 	</fieldset>
 </form:form>

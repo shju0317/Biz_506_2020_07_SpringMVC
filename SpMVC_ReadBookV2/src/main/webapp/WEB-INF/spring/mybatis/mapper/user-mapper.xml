@@ -29,7 +29,8 @@
 			m_name,
 			m_tel,
 			m_address,
-			m_email
+			m_email,
+			enabled
 		FROM tbl_member WHERE m_userid = #{username}
 	</select>
 	<insert id="insert" parameterType="UserDetail">
@@ -40,7 +41,7 @@
 			M_TEL,
 			M_ADDRESS,
 			M_EMAIL,
-			ENABLE,
+			ENABLED,
 			AccountNonExpired,
 			AccountNonLocked,
 			CredentialsNonExpired
@@ -51,13 +52,21 @@
 			#{m_tel},
 			#{m_address},
 			#{m_email},
-			'1',
+			#{enabled},
 			'1',
 			'1',
 			'1'
 		)
 	</insert>
-	<update id="update"></update>
+	<update id="update">
+	UPDATE tbl_member
+	SET m_name = #{m_name}, 
+	m_tel = #{m_tel}, 
+	m_address = #{m_address}, 
+	m_email = #{m_email}
+	WHERE m_userid = #{username}
+	</update>
+	
 	<delete id="delete"></delete>
 
 </mapper> 
