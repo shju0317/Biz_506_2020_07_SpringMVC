@@ -16,11 +16,20 @@ $(function () {
     }
 
     // ajax를 사용하여 서버에 네이버 검색 요청
+    // spring security 프로젝트에서 POST로 전송할 경우
+    // csrf 관련 값을 같이 보내줘야 정상적으로 서버에서
+    // 데이터를 받아들인다.
+    // jsp파일에서 spring form을 사용하면 관련된 부분을 자동으로 설정해주지만
+    // ajax를 사용해서 POST로 전송할 경우는
+    // 자동으로 설정이 되지 않아서 임의로 값을 지정해주어야 한다.
     $.ajax({
       // ajax로 서버의 /naver/search URL에 POST로 요청을 하면서
       // search_text 변수에 title변수에 담긴 값을 담아서 전달하고
       url: `${rootPath}/naver/search`,
       method: "POST",
+      beforeSend: function (ax) {
+        ax.setRequestHeader(`${csrf_header}`, `${csrf_token}`);
+      },
       data: { search_text: title },
       // 서버가 데이터 조회를 수행한 후 view(HTML)코드를
       // return하면 그 결과를
@@ -81,6 +90,9 @@ $(document).on("event","selector")
     $.ajax({
       url: `${rootPath}/api/isbn`,
       method: "POST",
+      beforeSend: function (ax) {
+        ax.setRequestHeader(`${csrf_header}`, `${csrf_token}`);
+      },
       data: { search_text: isbn },
     })
       .done(function (bookVO) {

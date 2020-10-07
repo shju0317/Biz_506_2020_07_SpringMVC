@@ -20,7 +20,8 @@
 		flex: 5;
 	}
 </style>   
-<form:form id="read-book-write" method="POST">
+
+<form:form id="read-book-write" modelAttribute="readBookVO">
 	<form:input path="r_date" placeholder="읽은 날짜"/>
 	<form:input path="r_stime" placeholder="읽기 시작한 시각"/>
 	<form:input path="r_etime" placeholder="읽기 종료한 시각"/>

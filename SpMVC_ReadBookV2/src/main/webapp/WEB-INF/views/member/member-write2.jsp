@@ -3,25 +3,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <link rel="stylesheet" type="text/css" href="${rootPath}/static/css/member-write.css?ver=2020-09-28"/>
-<form:form modelAttribute="memberVO" id="member-write">
+<form:form modelAttribute="memberVO" id="member-write" action="${rootPath}/member/join_comp">
 	<fieldset>
-		<legend>회원가입</legend>
+		<legend>회원가입 계속</legend>
 		<div>
-			<label>회원 ID</label>
-			<form:input path="username" class="username"/>
-			<button type="button" id="m_code_gen" class="m_code_gen">ID 중복검사</button>
+			<label>회원명</label>
+			<form:input path="m_name"/>
 		</div>
 		<div>
-			<label>비밀번호</label>
-			<form:input path="password" type="password"/>
+			<label>이메일</label>
+			<form:input path="m_email"/>
 		</div>
 		<div>
-			<label>비밀번호 확인</label>
-			<input name="re_password" id="re_password" type="password"/>
+			<label>전화번호</label>
+			<form:input path="m_tel"/>
+		</div>
+		<div>
+			<label>주소</label>
+			<form:input path="m_address"/>
 		</div>
 		<div id="btn_box">
 			<button type="button" id="btn_home">홈으로</button>
-			<button type="submit" id="btn_save">다음으로</button>
+			<button type="submit" id="btn_save">가입신청</button>
 		</div>
 	</fieldset>
 </form:form>

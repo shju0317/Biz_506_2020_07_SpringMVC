@@ -6,18 +6,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.book.model.UserDetailsVO;
 import com.biz.book.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 
+@SessionAttributes("memberVO")
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value="/member")
 public class MemberController {
 	
 	private final MemberService memberService;
+	
+	@ModelAttribute("memberVO")
+	public UserDetailsVO newMember() {
+		UserDetailsVO memberVO = UserDetailsVO.builder().build();
+		
+		return memberVO;
+	}
 	
 	/*
 	 * (VO)클래스를 Controller의 매개변수로 설정하고
@@ -39,9 +49,35 @@ public class MemberController {
 		return "home";
 	}
 	
+	/*
+	 * 회원가입 입력폼을 2개로 분리하여 사용하기 위해
+	 * join GET : member-write.jsp가 열리고
+	 * join POST : member-write2.jsp가 열린다.
+	 * member-write.jsp에서 입력한 id, password를 join post로 보내면
+	 * @ModelAttribute("memberVO") 설정을 확인하고
+	 * server에 임시 보관 중인 sessionAttribute("memberVO")를 찾아서
+	 * 입력박스로부터 전달된 데이터를 보관한다.
+	 * memeber-write2.jsp를 열고 나머지 데이터를 입력한 후
+	 * join_comp POST로 보내면
+	 * 먼저 입력받아서 SessionAttributes에 보관중인 id, 비번과
+	 * 나중에 입력한 이름, 전화번호 등과 함께 묶어서
+	 * join_comp의 userVO에 담아준다.
+	 * 입력폼의 항목이 매우 많을 때
+	 * 입력폼을 분리해서 코딩을 해도 SessionAttributes의 성질을 이용하여
+	 * 마치 입력마법사와 같은 기능을 구현할 수 있다.
+	 */
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String join(@ModelAttribute("memberVO") UserDetailsVO userVO) {
+	public String join(@ModelAttribute("memberVO") UserDetailsVO userVO, Model model, String str) {
+		model.addAttribute("memberVO", userVO);
+		model.addAttribute("BODY", "MEMBER-JOIN-NEXT");
+		
+		return "home";
+	}
+	
+	@RequestMapping(value="/join_comp", method=RequestMethod.POST)
+	public String join(@ModelAttribute("memberVO") UserDetailsVO userVO, SessionStatus status) {
 		memberService.insert(userVO);
+		status.setComplete();
 		
 		return "redirect:/";
 	}

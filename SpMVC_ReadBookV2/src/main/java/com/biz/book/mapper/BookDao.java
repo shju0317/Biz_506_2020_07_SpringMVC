@@ -1,5 +1,8 @@
 package com.biz.book.mapper;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Select;
+
 import com.biz.book.model.BookVO;
 
 /*
@@ -8,4 +11,9 @@ import com.biz.book.model.BookVO;
  */
 public interface BookDao extends GenericDao<BookVO, Long>{
 	
+	@Delete("DELETE FROM tbl_books WHERE seq = #{id}")
+	public int delete(Long id);
+	
+	@Select("SELECT * FROM tbl_books WHERE seq = #{id}")
+	public BookVO findById(long id);
 }

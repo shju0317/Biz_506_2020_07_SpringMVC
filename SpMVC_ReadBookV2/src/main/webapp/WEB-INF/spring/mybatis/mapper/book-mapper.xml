@@ -8,10 +8,7 @@
 	<select id="selectAll" resultType="BookVO">
 		SELECT * FROM tbl_books
 	</select>
-	<select id="findById" resultType="BookVO">
-		SELECT * FROM tbl_books
-		WHERE seq = #{seq}
-	</select>
+
 	<insert id="insert">
 		INSERT INTO tbl_books(
 		seq, title, link, image, author, 
@@ -34,7 +31,22 @@
 		#{buystore}
 		)
 	</insert>
-	<update id="update"></update>
-	<delete id="delete"></delete>
-
+	<update id="update" parameterType="BookVO">
+		UPDATE tbl_books SET
+			title	= #{title},
+			link	= #{link},
+			image	= #{image},
+			author	= #{author},
+			price	= #{price},
+			discount	= #{discount},
+			publisher	= #{publisher},
+			isbn		= #{isbn},
+			description	= #{description},
+			pubdate		= #{pubdate},
+			buydate		= #{buydate},
+			buyprice	= #{buyprice},
+			buystore	= #{buystore}
+		WHERE
+			seq	= #{seq}
+	</update>
 </mapper> 

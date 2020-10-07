@@ -4,7 +4,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>   
 <link href="${rootPath}/static/css/book-write.css?ver=2020-09-24-002" rel="stylesheet"> 
-<script src="${rootPath}/static/js/book-write.js?ver=2020-09-24-002"></script>
+<script>
+	// 컨트롤러에서 보내준 _csrf.headerName과 _csrf.token 값을 JS파일로 전달하기 위해서
+	// 스크립트 변수를 선언하고
+	// book-write.js에서 ajax POST 전송 전에 값을 Header에 실어서 보낸다.
+	// js파일에서는 csrf_header 변수와 csrf_token 변수를 백틱으로 묶어서 사용한다.
+	var csrf_header = '${_csrf.headerName}'
+	var csrf_token = '${_csrf.token}'
+</script>
+<script src="${rootPath}/static/js/book-write.js?ver=2020-10-07-001"></script>
 <form:form id="books" modelAttribute="bookVO">
 	<fieldset>
 		<legend>도서정보 입력</legend>
