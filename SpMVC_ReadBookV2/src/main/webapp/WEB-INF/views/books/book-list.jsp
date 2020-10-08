@@ -9,7 +9,20 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>Spring Framework~!!</title>
 <link href="${rootPath}/static/css/book-list.css?ver=2020-09-24-004" rel="stylesheet">
-<script src="${rootPath}/static/js/book-list.js?ver=2020-09-24"></script>
+<script>
+	$(function () {
+	
+	  $("tr.book-item").click(function () {
+	    let seq = $(this).data("seq");
+
+	    /* query String 방식 */
+	    // document.location.href = "${rootPath}/books/detail?seq=${seq}";
+
+	    /* path Variable 방식 */
+	    document.location.href = '${rootPath}/books/detail/' + seq;
+	  });
+	});
+</script>
 </head>
 <body>
 <table id="book-list">
@@ -33,7 +46,7 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${BOOKS}" var="book" varStatus="i">
-				<tr>
+				<tr class="book-item" data-seq="${book.seq}">
 					<td>${i.count}</td>
 					<td class="book-title" data-seq="${book.seq}">${book.title}</td>
 					<td>${book.author}</td>

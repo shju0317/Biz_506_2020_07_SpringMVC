@@ -87,7 +87,7 @@ button:hover {
 }
 </style>
 <script>
-	$function(){
+	$(function(){
 		$("button#btn-update").click(function(){
 			let seq = $(this).data("seq")
 			document.location.href="${rootPath}/books/update/" + seq
@@ -95,11 +95,11 @@ button:hover {
 		
 		$("button#btn-delete").click(function(){
 			if(confirm("정말 삭제할까요?")){
-			let seq = $(this).data("seq");
+			let seq = $(this).data("seq")
 			document.location.replace("${rootPath}/books/delete/" + seq)
 		}
 		})
-	}
+	})
 </script>
 <table id="book-detail">
 	<tr class="title">

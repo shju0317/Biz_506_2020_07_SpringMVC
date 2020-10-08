@@ -13,6 +13,26 @@
 	var csrf_token = '${_csrf.token}'
 </script>
 <script src="${rootPath}/static/js/book-write.js?ver=2020-10-07-001"></script>
+<%/*
+@SessionAttributes(), @ModelAttribute(), Spring form taglib를 연동한 write(입력폼) 구현
+Controller 클래스에 @SessionAttributes("bookVO")를 설정하고
+각 method에 매개변수로 @ModelAttribute("bookVO") BookVO bookVO를 선언하고
+Controller 클래스의 멤버영역에 @ModelAttribute("bookVO") public BookVO newBookVO(){} 메서드를 선언하고
+Spring form taglib를 이용한 write form에 <form: form modelAttribute="bookVO">를 선언하여
+프로젝트를 구현하면
+
+id, seq 등의 실제 사용자에게 입력받거나, 보여줄 필요가 없는 VO의 변수들을
+<input type="hidden">으로 설정한 후 Controller에 전송하던 HTML5 표준방식을 사용하지 않아도
+VO에 설정된 변수들을 Controller와 JSP가 서로 공유하여 사용할 수 있다.
+@SessionAttributes()에 담긴 VO객체는 서버의 메모리에 보관되며
+HTTP 프로토콜의 비연결지향(상태가 없는 통신) 통신 상태에서도 데이터를 서로 자유롭게 공유하여
+구현할 수 있는 장점이 있다.
+
+경우에 따라 입력 form을 사용자에게 보여주었을 때 최종 마지막에 입력했던 데이터들이
+form에 나타나서 불편한 경우가 있다.
+이러한 현상을 방지하기 위해 form에 입력되었던 데이터 사용이 끝나면(insert, update 완료 후)
+SessionStatus.setComplete() method를 호출하여 데이터를 clear시켜줘야 한다.
+*/%>
 <form:form id="books" modelAttribute="bookVO">
 	<fieldset>
 		<legend>도서정보 입력</legend>
