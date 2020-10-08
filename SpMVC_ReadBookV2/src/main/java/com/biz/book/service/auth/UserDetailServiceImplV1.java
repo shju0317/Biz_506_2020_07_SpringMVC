@@ -1,5 +1,11 @@
 package com.biz.book.service.auth;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -7,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.biz.book.mapper.AuthorityDao;
 import com.biz.book.mapper.UserDao;
+import com.biz.book.model.AuthorityVO;
 import com.biz.book.model.UserDetailsVO;
 
 import lombok.RequiredArgsConstructor;
@@ -89,7 +96,31 @@ public class UserDetailServiceImplV1 implements UserDetailsService{
 		 */
 		//userDetail.setEnabled(true);
 		
+		if(this.getAuthorities(username).size() == 0) {
+			throw new UsernameNotFoundException(String.format("[ %s ]는 아무 권한이 없습니다", username));
+		}
+		
+		// DB로부터 가져와서 GrantedAuthority로 변환한 ROLE정보 List를 UserDetails 정보에 저장
+		userDetail.setAuthorities(this.getAuthorities(username));
+		
 		return userDetail;
 	}
-
+	
+	// tbl_authority로부터 ROLE정보를 가져와서 List로 생성
+	private Collection<GrantedAuthority> getAuthorities(String username){
+		
+		// tbl_authority로부터 ROLE정보를 SELECT
+		List<AuthorityVO> authList = authDao.findByUserName(username);
+		// |
+		// | 변환
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();	
+		for(AuthorityVO vo : authList) {
+			// 문자열로 된 ROLE정보를 GrantedAuthority 타입으로 변환하여
+			// 리스트로 생성하기
+			// SimpleGrantedAuthority클래스를 사용하여 변환
+			authorities.add(new SimpleGrantedAuthority(vo.getAuthority()));
+		}
+		
+		return authorities;
+	}
 }

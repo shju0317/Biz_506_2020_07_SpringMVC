@@ -15,9 +15,11 @@
 	-->
 	<context:component-scan base-package="com.biz.book.service.auth"/>
 	
-	<bean class="org.springframework.security.config.core.GrantedAuthorityDefaults">
-		<constructor-arg value=""/>
-	</bean>
+	<!-- 권한 검사를 할 때 prefix 설정하는 클래스 bean -->
+	<!-- 이 클래스를 bean 설정하면서 construnct-arg value="" : prefix 제거하는 효과 -->
+	<!-- security 버전마다 조금씩 차이가 있어서 설정값이 적용이 안되는 경우가 있다 -->
+	<!-- 보통은 설정하지 않고 기본값으로 접두어(ROLE_)를 붙어셔 사용한다 : ROLE_ADMIN -->
+	<!-- org.springframework.security.config.core.GrantedAuthorityDefaults -->
 	
 	<!-- spring security에서 사용할 AuthenticationProvider를 구현한 클래스를 bean으로 등록 -->
 	 <bean id="customAuthProvider" class="com.biz.book.auth.AuthProviderImpl"/>

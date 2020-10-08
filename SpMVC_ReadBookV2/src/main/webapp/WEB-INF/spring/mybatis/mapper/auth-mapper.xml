@@ -15,6 +15,11 @@
 		FROM tbl_authority WHERE seq = #{seq}
 	</select>
 	
+	<select id="findByUserName" resultType="Authority">
+		SELECT seq, m_userid AS username, m_role AS authority
+		FROM tbl_authority WHERE m_userid = #{username}
+	</select>
+	
 	<update id="update"></update>
 	<delete id="delete"></delete>
 	
@@ -25,6 +30,7 @@
 	 		(SEQ_AUTHORITY.NEXTVAL, #{username}, #{authority})
 	</insert>
 	
+	<!-- oracle과 mybatis를 연동했을 때 seq PK가 없는 테이블에 다중 insert를 수행하는 코드 -->
 	<insert id="insertAll_1" parameterType="Authority">
 	 	
 	 	<foreach collection="list" 
@@ -38,6 +44,7 @@
 	 	</foreach>	
 	</insert>
 	
+	<!-- oracle과 mybatis를 연동했을 때 seq PK가 있는 테이블에 다중 insert를 수행하는 코드 -->
 	<insert id="insertAll" parameterType="Authority">
 		INSERT INTO tbl_authority(seq, m_userid, m_role)
 		

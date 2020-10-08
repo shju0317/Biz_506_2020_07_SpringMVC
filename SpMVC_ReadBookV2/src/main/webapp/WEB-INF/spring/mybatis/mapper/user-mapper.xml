@@ -22,6 +22,7 @@
 			m_email
 		FROM tbl_member WHERE m_userid = #{username}
 	</select>
+	
 	<select id="findById" resultType="UserDetail">
 		SELECT
 			m_userid AS username,
@@ -33,6 +34,7 @@
 			enabled
 		FROM tbl_member WHERE m_userid = #{username}
 	</select>
+	
 	<insert id="insert" parameterType="UserDetail">
 		INSERT INTO tbl_member(
 			M_USERID,
