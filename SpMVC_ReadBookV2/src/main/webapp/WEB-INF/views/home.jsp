@@ -73,8 +73,22 @@
 			<c:when test="${BODY == 'MEMBER-UPDATE-NEXT'}">
 				<%@ include file="/WEB-INF/views/member/member-update2.jsp"%>
 			</c:when>
+
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/main-body.jsp"%>
+				<style>
+					div#select_box{
+						width: 50%;
+						margin: 10px auto;
+					}
+				</style>
+				
+				<div id="select_box">
+					<form:form>
+						<form:select path="category">
+						</form:select>
+					</form:form>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</section>
