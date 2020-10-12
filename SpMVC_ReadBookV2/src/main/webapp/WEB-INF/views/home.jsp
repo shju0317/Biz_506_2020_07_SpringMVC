@@ -82,13 +82,6 @@
 						margin: 10px auto;
 					}
 				</style>
-				
-				<div id="select_box">
-					<form:form>
-						<form:select path="category">
-						</form:select>
-					</form:form>
-				</div>
 			</c:otherwise>
 		</c:choose>
 	</section>

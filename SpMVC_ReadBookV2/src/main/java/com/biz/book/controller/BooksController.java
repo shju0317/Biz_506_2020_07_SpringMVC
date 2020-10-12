@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.book.mapper.BookDao;
+import com.biz.book.mapper.ReadBookDao;
 import com.biz.book.model.BookVO;
 import com.biz.book.model.ReadBookVO;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /*
@@ -30,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
  * 자동으로 Transaction이 작동된다.
  */
 
+@RequiredArgsConstructor
 @SessionAttributes("bookVO")
 @Transactional
 @Slf4j
@@ -37,8 +40,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/books")
 public class BooksController {
 
-	@Autowired
-	private BookDao bookDao;
+
+	private final BookDao bookDao;
+	private final ReadBookDao rbookDao;
 	
 	@ModelAttribute("bookVO")
 	public BookVO newBookVO() {
@@ -142,6 +146,10 @@ public class BooksController {
 								.r_date(lDate)
 								.r_stime(lTime)
 								.build();
+		
+		List<ReadBookVO> readList = rbookDao.findByBSeq(seq);
+		model.addAttribute("READ_BOOK", readList);
+		
 		model.addAttribute("readBookVO", readBookVO);
 		
 		model.addAttribute("BODY", "BOOK-DETAIL");
