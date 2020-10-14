@@ -10,10 +10,8 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="tilesView" class="org.springframework.web.servlet.view.tiles3.TilesView">
-	</bean>
-	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass" ref="tilesView"></property>
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
 		<property name="order" value="1"></property>
 	</bean>
 </beans>
