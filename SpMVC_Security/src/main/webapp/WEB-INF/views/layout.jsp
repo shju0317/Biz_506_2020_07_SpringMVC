@@ -34,6 +34,21 @@
 		text-transform:uppercase;
 	}
 	
+	section#content{
+	/*
+	html, body의 height:100%로 설정하고,
+	body를 flex로 설정,
+	flex-direction: column으로 설정,
+	header, nav, content, footer를 각각 배열하고
+	content가 있는 box에만 flex:1 로 설정하면
+	세로방향으로 가득 찬 layout이 만들어진다.
+	*/
+		flex: 1;
+		
+		/* content box에 포함되는 내용이 넘치면 자동으로 스크롤바 형성 */
+		overflow: auto;
+	}
+	
 	nav#main-nav ul{
 		list-style: none;
 		display: flex;
@@ -46,6 +61,8 @@
 		color: white;
 		border: 2px solid #02334a;
 		text-transform:uppercase;
+		cursor: pointer;
+		transition: border-color 0.3s linear;
 	}
 	
 	nav#main-nav li:hover{
@@ -68,7 +85,9 @@
 <body>
 	<tiles:insertAttribute name="header"/>
 	<tiles:insertAttribute name="menu"/>
-	<tiles:insertAttribute name="content"/>
+	<section id="content">
+		<tiles:insertAttribute name="content"/>
+	</section>
 	<tiles:insertAttribute name="footer"/>
 </body>
 </html>
