@@ -9,7 +9,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Read Book 2020</title>
-<link href="${rootPath}/static/css/index.css?ver=2020-09-25-006" rel="stylesheet" />
+<link href="${rootPath}/static/css/index.css?ver=2020-10-15-002" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	// js파일에서 el tag의 ${rootPath}값을 참조하기 위해서

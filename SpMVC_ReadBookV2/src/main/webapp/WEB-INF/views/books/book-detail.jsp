@@ -5,13 +5,14 @@
 table#book-detail {
 	width: 70%;
 	margin: 20px auto;
+	box-shadow: 3px 3px 3px rgb(102, 102, 153);
+	border-radius: 5px;
 }
 
 table#book-detail .title td {
 	padding: 0.5rem 1rem;
-	background-color: rgb(102, 102, 153);
-	color: white;
-	border-bottom: 1px solid grey;
+	color: rgb(153, 0, 102);
+	border-bottom: 2px solid rgb(153, 0, 102);
 }
 
 table#book-detail .info td:first-child {
@@ -54,9 +55,12 @@ table#book-detail .link th, table#book-detail .link td {
 }
 
 section#read-book-body {
-	width: 60%;
-	border: 1px dashed rgb(102, 102, 153);
+	width: 70%;
 	margin: 5px auto;
+	padding: 10px;
+	overflow: auto;
+	box-shadow: 3px 3px 3px rgb(102, 102, 153);
+	border-radius: 5px;
 }
 
 div#btn-box {
@@ -67,18 +71,19 @@ div#btn-box {
 
 button#btn-update, button#btn-delete {
 	margin: 5px;
-	padding: 12px 18px;
+	padding: 10px 18px;
 	outline: none;
 	border: 0;
+	border-radius:3px;
 }
 
 button#btn-update {
-	background-color: blue;
+	background-color: rgb(102, 102, 153);
 	color: white;
 }
 
-button#btn-update {
-	background-color: orange;
+button#btn-delete {
+	background-color: rgb(153, 0, 102);
 	color: white;
 }
 

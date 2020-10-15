@@ -19,6 +19,16 @@
 	form#read-book-write input[name='r_comment']{
 		flex: 5;
 	}
+	
+	button#btn-save{
+		margin: 5px;
+		padding: 10px 18px;
+		outline: none;
+		border: 0;
+		border-radius:3px;
+		background-color: rgb(102, 102, 153);
+		color: white;
+	}
 </style>   
 
 <form:form id="read-book-write" action="${rootPath}/read/write" modelAttribute="readBookVO">
@@ -27,7 +37,7 @@
 	<form:input path="r_stime" type="time" placeholder="읽기 시작한 시각"/>
 	<form:input path="r_etime" type="time" placeholder="읽기 종료한 시각"/>
 	<form:input path="r_comment" placeholder="읽은 소감"/>
-	<button>저장</button>
+	<button id="btn-save">저장</button>
 </form:form>
 <style>
 	table#rbook{

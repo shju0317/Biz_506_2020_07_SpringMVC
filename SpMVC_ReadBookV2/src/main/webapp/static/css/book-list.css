@@ -5,7 +5,7 @@ table#book-list {
   border-collapse: collapse;
   border-spacing: 0;
   width: 90%;
-  border: 2px dashed rgb(102, 102, 153);
+  box-shadow: 3px 3px 3px rgb(102, 102, 153);
   margin: 30px auto;
 }
 
@@ -15,6 +15,11 @@ table#book-list td {
   padding: 8px;
   text-align: left;
   vertical-align: top;
+}
+
+table#book-list th {
+  background-color: rgb(102, 102, 153);
+  color: white;
 }
 
 table#book-list td {
