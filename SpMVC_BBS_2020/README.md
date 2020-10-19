@@ -43,3 +43,17 @@
 * spring framework 프로젝트에서 오랫동안 사용하던 layout 도구이고, 현재는 버전업이 중단되었지만 비교적 사용하기 간편하여 많이 활용한다
 
 * layout에 해당하는 jsp를 만들고, 다른 jsp파일을 *.xml파일에 설정하여 자동으로 layout을 만들어주는 도구이다
+
+### mybatis configuration
+* mybatis의 여러가지 설정을 하기 위해서 mybatis-config.xml 파일을 만들어 사용했었는데
+* org.apache.ibatis.session.Configuration 클래스를 bean으로 등록하여 설정을 하고
+* mybatis-config.xml 파일을 작성하지 않는다
+
+### jdbcTypeForNull 값을 VARCHAR로 설정하기
+* 테스트과정에서 칼럼에 값을 포함하지 않은 상태로 INSERT를 수행하면
+* 부적절한 열유형 1111 이라는 오류가 발생하는데, 그 오류를 방지하기 위한 설정
+<property name="configuration">
+	<bean class="org.apache.ibatis.session.Configuration">
+		<property name="jdbcTypeForNull" value="VARCHAR"/>
+	</bean>
+</property>

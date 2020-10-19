@@ -1,12 +1,26 @@
 package com.biz.bbs.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.biz.bbs.model.BbsVO;
+import com.biz.bbs.service.BbsService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(value="/bbs")
 public class BbsController {
+	
+	@Qualifier("bbsServiceV1")
+	private final BbsService bbsService;
+	
 	/*
 	 * 만약 return문에 bbs/list 문자열이 있으면
 	 * 1. tiles-layout.xml에서 bbs/list로 설정된 항목을 검사
@@ -19,13 +33,26 @@ public class BbsController {
 	 */
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String list() {
+	public String list(Model model) {
+		
+		List<BbsVO> bbsList = bbsService.selectAll();
+		
+		model.addAttribute("BBS_LIST", bbsList);
+		
 		return "bbs/list";
 	}
 	
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String write() {
 		return "bbs/write";
+	}
+	
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public String write(BbsVO bbsVO) {
+		
+		bbsService.insert(bbsVO);
+		
+		return "redirect:/bbs/list";
 	}
 	
 	@RequestMapping(value="/detail", method=RequestMethod.GET)

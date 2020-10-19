@@ -9,7 +9,8 @@
 		})
 	})
 </script> 
-<table>
+<table class="table table-striped table-bordered table-hover">
+	<thead>
 	<tr>
 		<th>No</th>
 		<th>작성일자</th>
@@ -18,13 +19,21 @@
 		<th>제목</th>
 		<th>조회수</th>
 	</tr>
-	<tr>
-		<td>No</td>
-		<td>작성일자</td>
-		<td>작성시각</td>
-		<td>작성자</td>
-		<td>제목</td>
-		<td>조회수</td>
-	</tr>
+	</thead>
+	<tbody>
+		<c:if test="${empty BBS_LIST}">
+			<tr><td colspan="6">데이터가 없습니다</td></tr>
+		</c:if>
+		<c:forEach items="${BBS_LIST}" var="vo" varStatus="i">
+			<tr>
+				<td>${i.count}</td>
+				<td>${vo.b_date}</td>
+				<td>${vo.b_time}</td>
+				<td>${vo.b_writer}</td>
+				<td>${vo.b_subject}</td>
+				<td>${vo.b_count}</td>
+			</tr>
+		</c:forEach>	
+	</tbody>
 </table>
 <button id="bbs-write">글쓰기</button>

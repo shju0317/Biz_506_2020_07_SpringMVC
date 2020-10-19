@@ -35,6 +35,14 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+
 		<!-- mybatis를 활용한 프로젝트 -->
 		<!-- mybatis -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
@@ -83,19 +91,19 @@
 			<scope>provided</scope>
 		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
-	<dependency>
-		<groupId>org.apache.tiles</groupId>
-		<artifactId>tiles-core</artifactId>
-		<version>${org.apache.tiles-version}</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${org.apache.tiles-version}</version>
+		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
-	<dependency>
-		<groupId>org.apache.tiles</groupId>
-		<artifactId>tiles-extras</artifactId>
-		<version>${org.apache.tiles-version}</version>
-	</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${org.apache.tiles-version}</version>
+		</dependency>
 
 
 		<!-- AspectJ -->
