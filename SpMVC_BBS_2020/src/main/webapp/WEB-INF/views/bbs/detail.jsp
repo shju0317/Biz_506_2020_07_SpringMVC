@@ -53,13 +53,13 @@
 </style>
 <section id="bbs-detail-header">
 	<article>
-		<img src="${BBSVO.b_file}">
+		<img src="${BBSVO.b_file}" alt="이미지">
 	</article>
 	<article>
 		<div class="title">제목</div>
 		<div class="content">${BBSVO.b_subject}</div>
 		<div class="title">작성일시</div>
-		<div class="content">${BBSVO.b_date}${BBSVO.b_time}</div>
+		<div class="content">${BBSVO.b_date} ${BBSVO.b_time}</div>
 		<div class="title">작성자</div>
 		<div class="content">${BBSVO.b_writer}</div>
 		<div class="title">조회수</div>
