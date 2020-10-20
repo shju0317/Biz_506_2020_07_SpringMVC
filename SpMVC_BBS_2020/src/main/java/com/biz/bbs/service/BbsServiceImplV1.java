@@ -25,4 +25,10 @@ public class BbsServiceImplV1 implements BbsService{
 		bbsDao.insert(bbsVO);
 		
 	}
+
+	@Override
+	public BbsVO findBySeq(long long_seq) {
+		// TODO Auto-generated method stub
+		return bbsDao.findBySeq(long_seq);
+	}
 }

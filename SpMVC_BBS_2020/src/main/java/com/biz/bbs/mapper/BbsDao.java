@@ -12,7 +12,7 @@ import com.biz.bbs.sql.BbsSQL;
 
 public interface BbsDao {
 	
-	@Select("SELECT * FROM tbl_bbs")
+	@Select("SELECT * FROM tbl_bbs ORDER BY b_seq DESC")
 	public List<BbsVO> selectAll();
 	
 	@Select("SELECT * FROM tbl_bbs WHERE b_seq=#{seq}")

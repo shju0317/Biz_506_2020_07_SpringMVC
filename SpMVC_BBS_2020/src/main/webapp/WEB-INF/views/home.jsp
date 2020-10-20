@@ -11,5 +11,6 @@
 </head>
 <body>
 <h3>Helloooooooooooooo :)</h3>
+<img src="${rootPath}/upload/korea.jpg">
 </body>
 </html>

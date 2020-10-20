@@ -84,7 +84,7 @@
 				});
 	})
 </script>
-<form id="write-form" method="POST">
+<form id="write-form" method="POST" enctype="multipart/form-data">
 	<fieldset>
 	<legend>글쓰기</legend>
 	<div>
@@ -106,6 +106,10 @@
 	<div>
 		<label></label>
 		<textarea id="b_content" rows="5" cols="25" name="b_content"></textarea>
+	</div>
+	<div>
+		<label>이미지</label>
+		<input type="file" name="file" accept="image/*">
 	</div>
 	<div class="button-box">
 		<button type="button" id="list">리스트</button>
