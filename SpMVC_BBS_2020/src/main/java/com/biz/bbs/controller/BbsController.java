@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +29,6 @@ public class BbsController {
 	@Autowired
 	@Qualifier("bbsServiceV1")
 	private BbsService bbsService;
-	
-	@Autowired
-	@Qualifier("fileServiceV4")
-	private FileService fileService;
 	
 	/*
 	 * 만약 return문에 bbs/list 문자열이 있으면
@@ -68,10 +65,9 @@ public class BbsController {
 	public String write(BbsVO bbsVO, @RequestParam("file") MultipartFile file) {
 		
 		log.debug("업로드한 파일 이름" + file.getOriginalFilename());
-		String fileName = fileService.fileUp(file);
-		bbsVO.setB_file(fileName);
+
 		
-		bbsService.insert(bbsVO);
+		bbsService.insert(bbsVO, file);
 		
 		return "redirect:/bbs/list";
 	}
@@ -85,5 +81,22 @@ public class BbsController {
 		model.addAttribute("BBSVO", bbsVO);
 		
 		return "bbs/detail";
+	}
+	
+	
+	@RequestMapping(value="/{seq}/{url}", method=RequestMethod.GET)
+	public String update(@PathVariable("seq") String seq, @PathVariable("url") String url, Model model) {
+		
+		long long_seq = Long.valueOf(seq);
+		String ret_url = "redirect:/bbs/list";
+		
+		if(url.equalsIgnoreCase("DELETE")) {
+			bbsService.delete(long_seq);			
+		}else if(url.equalsIgnoreCase("UPDATE")) {
+			model.addAttribute("BBSVO", bbsService.findBySeq(long_seq));
+			ret_url = "/bbs/write";
+		}
+
+		return ret_url;
 	}
 }

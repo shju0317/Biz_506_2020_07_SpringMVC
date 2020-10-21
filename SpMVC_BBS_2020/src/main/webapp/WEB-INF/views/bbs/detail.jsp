@@ -50,10 +50,62 @@
 		border: 1px solid #485123;
 		box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 	}
+	
+	section#bbs-button-box{
+		width:50%;
+		margin:10px auto;
+		text-align:right;
+	}
+	
+	section#bbs-button-box button{
+		margin: 10px 5px;
+		padding: 10px 16px;
+		border: 0;
+		outline: 0;
+		border-radius: 5px;
+		font-weight: bold;
+		color: white;
+	}
+	
+	section#bbs-button-box button:hover{
+		box-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+	}
+	
+	section#bbs-button-box button:nth-child(1){
+		background-color: #485123;
+	}
+	
+	section#bbs-button-box button:nth-child(2){
+		background-color: #eadd46;
+	}
+	
+	section#bbs-button-box button:nth-child(3){
+		background-color: #596a71;
+	}
+	
 </style>
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		document.querySelector("section#bbs-button-box").addEventListener("click", function(e){
+			let url = "${rootPath}/bbs/"
+			if(e.target.tagName === "BUTTON"){
+				
+				if(e.target.className == "delete"){
+					if(!confirm("정말 삭제할까요?")){
+						return false;
+					}
+				}
+				
+				document.location.href = url + "${BBSVO.b_seq}/" + e.target.className 
+			}
+		})
+	})
+</script>
 <section id="bbs-detail-header">
 	<article>
-		<img src="${BBSVO.b_file}" alt="이미지">
+		<a href="${rootPath}/upload/${BBSVO.b_file}" target=_new>
+			<img src="${rootPath}/upload/${BBSVO.b_file}" alt="이미지" width="200px">
+		</a>
 	</article>
 	<article>
 		<div class="title">제목</div>
@@ -67,3 +119,8 @@
 	</article>
 </section>
 <section id="bbs-detail-body">${BBSVO.b_content}</section>
+<section id="bbs-button-box">
+	<button class="list">리스트</button>
+	<button class="update">수정</button>
+	<button class="delete">삭제</button>
+</section>
