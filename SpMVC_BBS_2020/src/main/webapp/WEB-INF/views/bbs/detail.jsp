@@ -90,8 +90,27 @@
 			let url = "${rootPath}/bbs/"
 			if(e.target.tagName === "BUTTON"){
 				
+				/*
+				게시글 삭제를 요청하면(삭제버튼 클릭시)
+				ajax를 사용하여 서버에 DELETE method 타입으로 삭제를 요청하자
+				*/
 				if(e.target.className == "delete"){
-					if(!confirm("정말 삭제할까요?")){
+					if(confirm("정말 삭제할까요?")){
+						let data = { seq : "${BBSVO.b_seq}" }
+						fetch("${rootPath}/api/bbs", 
+							{
+							method : "PUT",
+							headers : {"Content-Type" : "application/json"},
+							body : JSON.stringify(data) // JSON 객체데이터를 문장려화하여 HTTP body에 담기
+							}
+						)
+						.then(function(result){
+							alert("예에~")
+						})
+						.catch(function(error){
+							alert("우우ㅠㅠ")
+						})
+						
 						return false;
 					}
 				}
