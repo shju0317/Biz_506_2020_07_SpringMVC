@@ -96,11 +96,13 @@
 				*/
 				if(e.target.className == "delete"){
 					if(confirm("정말 삭제할까요?")){
-						let data = { seq : "${BBSVO.b_seq}" }
+						let data = { seq : "${BBSVO.b_seq}",
+									 subject : "${BBSVO.b_subject}"
+						}
 						fetch("${rootPath}/api/bbs", 
 							{
 							method : "PUT",
-							headers : {"Content-Type" : "application/json"},
+							headers : { "Content-Type" : "application/json" },
 							body : JSON.stringify(data) // JSON 객체데이터를 문장려화하여 HTTP body에 담기
 							}
 						)
