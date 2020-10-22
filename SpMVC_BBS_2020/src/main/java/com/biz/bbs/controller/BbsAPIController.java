@@ -56,18 +56,18 @@ public class BbsAPIController {
 	// form의 input 태그에 지정된 name값과 같은 구조를 가진 VO를 매개변수로 설정하면
 	// 자동으로 @ModelAttribute를 지정한 것과 똑같은 효과를 낸다.
 	@RequestMapping(value="/bbs", method=RequestMethod.POST)
-	public String bbs_insert(@ModelAttribute BbsVO bbsVO, @RequestBody Map<String, String> data) {
+	public String bbs_insert(@ModelAttribute BbsVO bbsVO) {
 		log.debug("POST RequestMethod 타입으로 요청된 메서드");
-		log.debug("시퀀스값 {}", data.get("seq").toString());
+		log.debug("BBSVO {}",bbsVO.toString());
 		
 		return "bbs_insert";
 	}
 	
 	// form에 데이터를 입력하고 submit을 수행하면 데이터를 update하라
 	@RequestMapping(value="/bbs", method=RequestMethod.PUT)
-	public String bbs_update(BbsVO bbsVO, @RequestBody Map<String, String> data) {
+	public String bbs_update(@ModelAttribute BbsVO bbsVO) {
 		log.debug("PUT RequestMethod 타입으로 요청된 메서드");
-		log.debug("수신한데이터 {}", data);
+		log.debug("수신한데이터 {}", bbsVO.toString());
 		return "bbs_update";
 	}
 	
