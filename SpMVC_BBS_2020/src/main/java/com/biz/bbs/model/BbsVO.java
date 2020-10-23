@@ -1,5 +1,7 @@
 package com.biz.bbs.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +23,6 @@ public class BbsVO {
 	private String b_content;
 	private int b_count;
 	private String b_file;
+	
+	private List<ImageVO> images;
 }
