@@ -105,6 +105,7 @@ public class AuthProviderImpl implements AuthenticationProvider {
 //			rollList.add(new SimpleGrantedAuthority(auth.getAuthority()));
 //		}
 		
+		
 		// 로그인한 사용자에게 인증 token을 발행
 		// 사용자의 detail정보와 roll정보를 token에 같이 심어놓는다.
 		return new UsernamePasswordAuthenticationToken(userVO, null, userVO.getAuthorities());
