@@ -67,21 +67,6 @@
 </style>
 <script>
 	$(function(){
-		var toolbar = [
-			['style',['bold','italic','underline'] ],
-			['fontsize',['fontsize']],
-			['font Style',['fontname']],
-			['color',['color']],
-			['para',['ul','ol','paragraph']],
-			['height',['height']],
-			['table',['table']],
-			['insert',['link','hr','picture']],
-			['view',['fullscreen','codeview']]	
-		]
-		
-		$("#b_content").summernote({
-			lang:"ko-KR", width:"80%", height:"250px",toolbar: toolbar
-				});
 	})
 </script>
 <form id="write-form" method="POST" enctype="multipart/form-data">
