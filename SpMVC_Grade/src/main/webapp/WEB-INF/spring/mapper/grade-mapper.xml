@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.grade.mapper.GradeDao">
+ 	<insert id="insert">
+		INSERT INTO tbl_grade(
+			id,
+			g_sid,
+			g_name,
+			g_kor,
+			g_eng,
+			g_math,
+			g_total,
+			g_avg
+		) VALUES (
+			SEQ_GRADE.NEXTVAL,
+			#{g_sid},
+			#{g_name},
+			#{g_kor},
+			#{g_eng},
+			#{g_math},
+			#{g_total},
+			#{g_avg}
+		)
+ 	</insert>
+ 	
+ 	<update id="update">
+ 		UPDATE tbl_grade SET
+			g_sid = #{g_sid},
+			g_name = #{g_name},
+			g_kor = #{g_kor},
+			g_eng = #{g_eng},
+			g_math = #{g_math},
+			g_total = #{g_total},
+			g_avg = #{g_avg}
+		WHERE id = #{id}
+ 	</update>
+ </mapper>
